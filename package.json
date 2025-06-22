@@ -1,0 +1,56 @@
+{
+  "name": "character-counter",
+  "version": "1.0.0",
+  "description": "シンプルな文字数カウンターアプリ",
+  "main": "main.js",
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "electron": "electron .",
+    "electron-dev": "concurrently \"npm run dev\" \"wait-on http://localhost:3000 && electron .\"",
+    "dist": "npm run build && electron-builder",
+    "pack": "electron-builder --dir"
+  },
+  "keywords": [
+    "electron",
+    "nextjs",
+    "character-counter",
+    "macos"
+  ],
+  "author": "Your Name",
+  "license": "MIT",
+  "build": {
+    "appId": "com.example.character-counter",
+    "productName": "文字数カウンター",
+    "directories": {
+      "buildResources": "build"
+    },
+    "files": [
+      "main.js",
+      "out/**/*",
+      "node_modules/**/*"
+    ],
+    "mac": {
+      "target": "dmg",
+      "icon": "build/icon.png"
+    }
+  },
+  "devDependencies": {
+    "@types/node": "^20.8.0",
+    "@types/react": "^18.2.25",
+    "@types/react-dom": "^18.2.10",
+    "concurrently": "^8.2.2",
+    "electron": "^27.0.0",
+    "electron-builder": "^24.6.4",
+    "eslint": "^8.50.0",
+    "eslint-config-next": "^13.5.4",
+    "typescript": "^5.2.2",
+    "wait-on": "^7.0.1"
+  },
+  "dependencies": {
+    "next": "^13.5.4",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  }
+} 
