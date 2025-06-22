@@ -1,7 +1,3 @@
-<p align="center">
-  <img src="./public/icon.png" width="20%" height="40%" />
-</p>
-
 # 文字数カウンター
 
 <p align="center">
