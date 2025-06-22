@@ -1,8 +1,7 @@
 # 文字数カウンター
-<div style="display: flex; justify-content: space-between; align-items: center;">
-  <img src="./public/icon.png" width="20%" height="40%" />
-  <img src="./public/screenshot.png" width="60%" />
-</div>
+<img src="./public/icon.png" width="20%" height="40%" />
+<img src="./public/screenshot.png" width="60%" />
+
 
 macOS用のシンプルな文字数カウンターアプリケーションです。Next.js + Electronで構築されています。
 
