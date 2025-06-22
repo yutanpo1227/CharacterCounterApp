@@ -1,5 +1,5 @@
 # 文字数カウンター
- <img src="./public/icon.png" width="50%" />
+ <img src="./public/icon.png" width="25%" />
 
 macOS用のシンプルな文字数カウンターアプリケーションです。Next.js + Electronで構築されています。
 
@@ -25,6 +25,7 @@ npm run dist
 ```
 
 3. アプリを実行:
+
 `dist/文字数カウンター-{version}.dmg` を実行する
 
 ## 使用方法
