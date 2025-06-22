@@ -18,16 +18,14 @@ macOS用のシンプルな文字数カウンターアプリケーションです
 npm install
 ```
 
-2. 開発モードで実行:
-```bash
-npm run electron-dev
-```
-
-3. アプリをビルド:
+2. アプリをビルド:
 ```bash
 npm run build
 npm run dist
 ```
+
+3. アプリを実行:
+`dist/文字数カウンター-{version}.dmg` を実行する
 
 ## 使用方法
 
