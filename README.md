@@ -1,4 +1,5 @@
 # 文字数カウンター
+![logo](./public/icon.png)
 
 macOS用のシンプルな文字数カウンターアプリケーションです。Next.js + Electronで構築されています。
 
