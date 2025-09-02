@@ -1,10 +1,11 @@
 'use client';
 
-import { useState } from 'react';
+import { useState, useEffect, useRef } from 'react';
 
 export default function Home() {
   const [text, setText] = useState('');
   const [characterCount, setCharacterCount] = useState(0);
+  const textareaRef = useRef<HTMLTextAreaElement>(null);
 
   const countCharacters = () => {
     setCharacterCount(text.length);
@@ -13,6 +14,41 @@ export default function Home() {
   const handleTextChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     setText(e.target.value);
   };
+
+  const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
+    if (e.key === 'Enter') {
+      if (e.shiftKey) {
+        // Shift + Enter の場合は改行を許可（デフォルト動作）
+        return;
+      } else {
+        // Enter のみの場合は文字数計測
+        e.preventDefault();
+        countCharacters();
+      }
+    }
+  };
+
+  const focusTextarea = () => {
+    if (textareaRef.current) {
+      textareaRef.current.focus();
+    }
+  };
+
+  useEffect(() => {
+    // アプリマウント時にテキストエリアにフォーカス
+    focusTextarea();
+
+    // ウィンドウフォーカスイベントリスナー
+    const handleWindowFocus = () => {
+      focusTextarea();
+    };
+
+    window.addEventListener('focus', handleWindowFocus);
+
+    return () => {
+      window.removeEventListener('focus', handleWindowFocus);
+    };
+  }, []);
 
   const clearText = () => {
     setText('');
@@ -26,10 +62,12 @@ export default function Home() {
         
         <div className="input-section">
           <textarea
+            ref={textareaRef}
             className="text-area"
             placeholder="ここにテキストを入力してください..."
             value={text}
             onChange={handleTextChange}
+            onKeyDown={handleKeyDown}
           />
         </div>
 
@@ -56,6 +94,7 @@ export default function Home() {
 
         <div className="shortcut-info">
           <small>ショートカットキー: Cmd + Shift + Space でアプリを開く</small>
+          <small>Enterキーで文字数を計測、Shift + Enterで改行できます</small>
         </div>
       </div>
 
@@ -169,6 +208,9 @@ export default function Home() {
           text-align: center;
           color: #888;
           font-size: 0.9rem;
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
         }
 
         @media (max-width: 600px) {
