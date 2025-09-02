@@ -16,9 +16,15 @@ export default function Home() {
   };
 
   const handleKeyDown = (e: React.KeyboardEvent<HTMLTextAreaElement>) => {
-    if (e.key === 'Enter' && !e.shiftKey) {
-      e.preventDefault(); // デフォルトの改行動作を防ぐ
-      countCharacters();
+    if (e.key === 'Enter') {
+      if (e.shiftKey) {
+        // Shift + Enter の場合は改行を許可（デフォルト動作）
+        return;
+      } else {
+        // Enter のみの場合は文字数計測
+        e.preventDefault();
+        countCharacters();
+      }
     }
   };
 
@@ -88,7 +94,7 @@ export default function Home() {
 
         <div className="shortcut-info">
           <small>ショートカットキー: Cmd + Shift + Space でアプリを開く</small>
-          <small>Enterキーで文字数を計測できます</small>
+          <small>Enterキーで文字数を計測、Shift + Enterで改行できます</small>
         </div>
       </div>
 
